@@ -5,6 +5,7 @@ const { MongoClient } = require("mongodb");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const serverless = require("serverless-http"); // ✅ Added for Vercel
 
 const app = express();
 
@@ -115,7 +116,7 @@ app.post("/api/generate-otp", async (req, res) => {
   }
 });
 
-// ✅ NEW: Verify OTP
+// ✅ Verify OTP
 app.post("/api/verify-otp", async (req, res) => {
   try {
     const { aadhaar, otp } = req.body;
@@ -135,7 +136,7 @@ app.post("/api/verify-otp", async (req, res) => {
   }
 });
 
-// ✅ NEW: Submit PAN details
+// ✅ Submit PAN details
 app.post("/api/submit-pan", async (req, res) => {
   try {
     const { aadhaar, orgType, pan, panName, panDob, panConsent } = req.body;
@@ -185,6 +186,6 @@ app.post("/api/submit", async (req, res) => {
   }
 });
 
-// Start server
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`🚀 Server listening on port ${port}`));
+// ✅ Export for Vercel serverless
+module.exports = app;
+module.exports.handler = serverless(app);
