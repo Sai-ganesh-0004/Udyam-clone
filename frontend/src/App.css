@@ -1,0 +1,138 @@
+.form-box select {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  word-break: break-word;
+}
+.form-box input {
+  background: white !important;
+  color: black !important;
+}
+/* Force all text in the form to be black */
+.form-box,
+.form-box label,
+.form-box input,
+.form-box a,
+.form-box li,
+.form-box p,
+.form-box span,
+.form-box div,
+.form-box button {
+  color: black !important;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.form-box {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  width: 900px;
+  max-width: 95vw;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.form-header {
+  background: #007bff;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+}
+
+form {
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.info-list {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.info-list li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  margin: 15px 0;
+}
+
+.checkbox-row input {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.primary-btn {
+  background: #007bff;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #0069d9;
+}
+
+.info {
+  color: green;
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,172 @@
+/* src/styles/form.css */
+
+/* Basic reset */
+.ud-form-wrap {
+  padding: 12px;
+  max-width: 920px;
+  margin: 0 auto;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  color: #111827;
+}
+
+/* Title */
+.ud-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 12px 0 18px;
+}
+
+/* Progress / stepper */
+.ud-progress {
+  margin-bottom: 16px;
+}
+.ud-steps {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ud-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.ud-step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #111;
+}
+.ud-step.active .ud-step-circle {
+  background: #1d4ed8;
+  color: white;
+}
+.ud-step.done .ud-step-circle {
+  background: #10b981;
+  color: white;
+}
+.ud-step-label {
+  display: none; /* hide labels on small screens to save space */
+}
+
+/* Progress bar */
+.ud-progress-bar {
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.ud-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1d4ed8, #06b6d4);
+  width: 0%;
+  transition: width 300ms ease;
+}
+
+/* Form */
+.ud-form {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+.ud-field {
+  margin-bottom: 14px;
+}
+.ud-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #111827;
+}
+.ud-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+.ud-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+.ud-error {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #dc2626;
+}
+
+/* Checkbox */
+.checkbox .ud-checkbox-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Actions */
+.ud-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: #1d4ed8;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+/* Smaller screens adjustments (mobile-first) */
+@media (min-width: 520px) {
+  .ud-steps .ud-step-label {
+    display: inline-block;
+  }
+  .ud-title {
+    font-size: 1.25rem;
+  }
+  .ud-steps {
+    gap: 14px;
+  }
+  .ud-step-circle {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (min-width: 900px) {
+  .ud-form-wrap {
+    padding: 24px;
+  }
+  .ud-form {
+    padding: 24px;
+  }
+  .ud-title {
+    font-size: 1.4rem;
+  }
+}

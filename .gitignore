@@ -1,0 +1,42 @@
+# Node
+node_modules/
+.env
+*.log
+npm-debug.log*
+dist/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Vite/React
+frontend/dist/
+frontend/node_modules/
+
+# VSCode
+.vscode/
+
+# Mac/Windows
+.DS_Store
+Thumbs.db
+
+# Docker
+mongo_data/
+
+# Test output
+coverage/
+
+# Others
+*.local
+*.env.*
+
+# Ignore build artifacts
+backend/dist/
+
+# Ignore scraper output if not needed in repo
+scraper/form_schema.json
+
+# Ignore Railway/Vercel config if generated
+.railway/
+.vercel/

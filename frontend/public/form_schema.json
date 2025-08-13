@@ -1,0 +1,149 @@
+{
+  "source": "https://udyamregistration.gov.in/UdyamRegistration.aspx",
+  "fetched_at": "Wed Aug 13 21:53:29 2025",
+  "fields": [
+    {
+      "name": "ctl00$ContentPlaceHolder1$txtadharno",
+      "id": "ctl00_ContentPlaceHolder1_txtadharno",
+      "tag": "input",
+      "type": "text",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": "12",
+      "placeholder": "Your Aadhaar No"
+    },
+    {
+      "name": "ctl00$ContentPlaceHolder1$txtownername",
+      "id": "ctl00_ContentPlaceHolder1_txtownername",
+      "tag": "input",
+      "type": "text",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": "100",
+      "placeholder": "Name as per Aadhaar"
+    },
+    {
+      "name": "ctl00$ContentPlaceHolder1$chkDecarationA",
+      "id": "ctl00_ContentPlaceHolder1_chkDecarationA",
+      "tag": "input",
+      "type": "checkbox",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "ctl00$ContentPlaceHolder1$txtOtp1",
+      "id": "ctl00_ContentPlaceHolder1_txtOtp1",
+      "tag": "input",
+      "type": "text",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": "6",
+      "placeholder": "OTP code"
+    },
+    {
+      "name": "ctl00$ContentPlaceHolder1$btnValidate",
+      "id": "ctl00_ContentPlaceHolder1_btnValidate",
+      "tag": "input",
+      "type": "submit",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__EVENTTARGET",
+      "id": "__EVENTTARGET",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__EVENTARGUMENT",
+      "id": "__EVENTARGUMENT",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__VIEWSTATE",
+      "id": "__VIEWSTATE",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__VIEWSTATEGENERATOR",
+      "id": "__VIEWSTATEGENERATOR",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__EVENTVALIDATION",
+      "id": "__EVENTVALIDATION",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__AjaxControlToolkitCalendarCssLoaded",
+      "id": "__AjaxControlToolkitCalendarCssLoaded",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "__VIEWSTATEENCRYPTED",
+      "id": "__VIEWSTATEENCRYPTED",
+      "tag": "input",
+      "type": "hidden",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    },
+    {
+      "name": "checkbox",
+      "id": "checkbox",
+      "tag": "input",
+      "type": "checkbox",
+      "label": "",
+      "required": false,
+      "pattern": null,
+      "maxlength": null,
+      "placeholder": null
+    }
+  ]
+}
