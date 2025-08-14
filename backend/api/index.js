@@ -1,6 +1,6 @@
 // index.js
 if (!process.env.VERCEL) {
-  require("dotenv").config();
+  require("dotenv").config({ path: require('path').resolve(__dirname, '../.env') });
 }
 const express = require("express");
 const { MongoClient } = require("mongodb");
@@ -36,6 +36,9 @@ let client, db, registrationsCollection, otpsCollection, panCollection;
 async function connectDB() {
   if (client && client.topology && client.topology.isConnected()) return;
   try {
+    if (!process.env.MONGO_URI) {
+      throw new Error("MONGO_URI environment variable is not set");
+    }
     client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
     db = client.db("udyam"); // Main DB
