@@ -4,6 +4,7 @@ node_modules/
 *.log
 npm-debug.log*
 dist/
+.vercel
 
 # Python
 venv/

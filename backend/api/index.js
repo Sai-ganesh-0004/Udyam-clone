@@ -1,13 +1,12 @@
 // index.js
-require("dotenv").config({
-  path: require("path").resolve(__dirname, "../.env"),
-}); // ✅ Fixed path to .env file
+if (!process.env.VERCEL) {
+  require("dotenv").config();
+}
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const serverless = require("serverless-http"); // ✅ Added for Vercel
 
 const app = express();
 
@@ -31,12 +30,13 @@ try {
 }
 
 // MongoDB variables
-let db, registrationsCollection, otpsCollection, panCollection;
+let client, db, registrationsCollection, otpsCollection, panCollection;
 
 // MongoDB connection function
 async function connectDB() {
+  if (client && client.topology && client.topology.isConnected()) return;
   try {
-    const client = new MongoClient(process.env.MONGO_URI);
+    client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
     db = client.db("udyam"); // Main DB
     registrationsCollection = db.collection("registrations");
@@ -77,6 +77,14 @@ function validateAgainstSchema(data) {
 // Routes
 app.get("/api/schema", (req, res) => {
   res.json(formSchema);
+});
+
+app.get("/api", (req, res) => {
+  res.json({
+    ok: true,
+    service: "udyam-backend",
+    time: new Date().toISOString(),
+  });
 });
 
 app.get("/", (req, res) => {
@@ -192,11 +200,12 @@ app.post("/api/submit", async (req, res) => {
   }
 });
 
-// ✅ Export for Vercel serverless
-module.exports = app;
-module.exports.handler = serverless(app);
+// Export express app for tests
+module.exports.app = app;
+// Export Vercel handler
+module.exports = (req, res) => app(req, res);
 
-// ✅ Start server for local development
+// Start server for local development
 if (require.main === module) {
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {

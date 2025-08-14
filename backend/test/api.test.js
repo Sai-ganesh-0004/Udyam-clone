@@ -1,6 +1,6 @@
 // test/api.test.js
 const request = require("supertest");
-const app = require("../index"); // index.js must export `app`
+const { app } = require("../api/index");
 
 describe("API tests", () => {
   test("POST /api/validate should return 400 on invalid PAN", async () => {
