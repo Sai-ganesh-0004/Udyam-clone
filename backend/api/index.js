@@ -1,5 +1,5 @@
 // index.js
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" }); // ✅ Fixed path to .env file
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");

@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://localhost:4000/api/$1"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
