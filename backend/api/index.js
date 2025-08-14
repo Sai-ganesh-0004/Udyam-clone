@@ -1,5 +1,7 @@
 // index.js
-require("dotenv").config({ path: "../.env" }); // ✅ Fixed path to .env file
+require("dotenv").config({
+  path: require("path").resolve(__dirname, "../.env"),
+}); // ✅ Fixed path to .env file
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
@@ -193,3 +195,11 @@ app.post("/api/submit", async (req, res) => {
 // ✅ Export for Vercel serverless
 module.exports = app;
 module.exports.handler = serverless(app);
+
+// ✅ Start server for local development
+if (require.main === module) {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}

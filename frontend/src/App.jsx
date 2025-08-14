@@ -161,6 +161,8 @@ function App() {
       const data = await res.json();
       if (res.ok) {
         setOtpMessage(`OTP: ${data.otp}`);
+        // Show OTP in a popup for easy copying
+        alert(`🔐 Your OTP is: ${data.otp}\n\nPlease copy this OTP and paste it in the verification field.`);
         setStep(2);
       } else {
         setErrorMessage(data.error || "Failed to generate OTP");
