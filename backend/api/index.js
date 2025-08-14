@@ -22,11 +22,11 @@ try {
     formSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
   } else {
     console.error("❌ form_schema.json not found.");
-    process.exit(1);
+    formSchema = { fields: [] }; // Use empty schema instead of exiting
   }
 } catch (err) {
   console.error("❌ Failed to read form_schema.json:", err);
-  process.exit(1);
+  formSchema = { fields: [] }; // Use empty schema instead of exiting
 }
 
 // MongoDB variables
@@ -45,10 +45,12 @@ async function connectDB() {
     console.log("✅ MongoDB connected");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
-    process.exit(1);
+    // Don't exit in serverless environment, just log the error
   }
 }
-connectDB();
+
+// Initialize connection (but don't await in module scope for serverless)
+connectDB().catch(console.error);
 
 // Schema-based validation
 function validateAgainstSchema(data) {
@@ -102,6 +104,9 @@ app.post("/api/validate", (req, res) => {
 // Generate OTP
 app.post("/api/generate-otp", async (req, res) => {
   try {
+    // Ensure database connection
+    await connectDB();
+    
     const errors = validateAgainstSchema(req.body);
     if (errors.length) {
       return res.status(400).json({ errors });
@@ -133,6 +138,9 @@ app.post("/api/generate-otp", async (req, res) => {
 // ✅ Verify OTP
 app.post("/api/verify-otp", async (req, res) => {
   try {
+    // Ensure database connection
+    await connectDB();
+    
     const { aadhaar, otp } = req.body;
     if (!aadhaar || !otp) {
       return res.status(400).json({ error: "Aadhaar and OTP are required" });
@@ -153,6 +161,9 @@ app.post("/api/verify-otp", async (req, res) => {
 // ✅ Submit PAN details
 app.post("/api/submit-pan", async (req, res) => {
   try {
+    // Ensure database connection
+    await connectDB();
+    
     const { aadhaar, orgType, pan, panName, panDob, panConsent } = req.body;
     if (!aadhaar || !orgType || !pan || !panName || !panDob) {
       return res.status(400).json({ error: "All PAN fields are required" });
@@ -188,6 +199,9 @@ app.post("/api/submit", async (req, res) => {
   }
 
   try {
+    // Ensure database connection
+    await connectDB();
+    
     const result = await registrationsCollection.insertOne({
       ...req.body,
       createdAt: new Date(),
@@ -202,8 +216,9 @@ app.post("/api/submit", async (req, res) => {
 
 // Export express app for tests
 module.exports.app = app;
-// Export Vercel handler
-module.exports = (req, res) => app(req, res);
+
+// Export default function for Vercel
+module.exports = app;
 
 // Start server for local development
 if (require.main === module) {
