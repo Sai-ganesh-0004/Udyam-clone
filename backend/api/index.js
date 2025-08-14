@@ -77,6 +77,10 @@ app.get("/api/schema", (req, res) => {
   res.json(formSchema);
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Udyam API");
+});
+
 app.post("/api/validate", (req, res) => {
   const errors = validateAgainstSchema(req.body);
   if (errors.length) {
