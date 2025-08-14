@@ -149,15 +149,18 @@ function App() {
     setErrorMessage("");
     setOtpMessage("");
     try {
-      const res = await fetch("http://localhost:4000/api/generate-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          aadhaar: formData.aadhaar,
-          name: formData.name,
-          consent: formData.consent,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/generate-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            aadhaar: formData.aadhaar,
+            name: formData.name,
+            consent: formData.consent,
+          }),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         setOtpMessage(`OTP: ${data.otp}`);
@@ -178,14 +181,17 @@ function App() {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const res = await fetch("http://localhost:4000/api/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          aadhaar: formData.aadhaar,
-          otp: formData.otp,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/verify-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            aadhaar: formData.aadhaar,
+            otp: formData.otp,
+          }),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         setStep(3);
@@ -202,22 +208,39 @@ function App() {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const res = await fetch("http://localhost:4000/api/submit-pan", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          aadhaar: formData.aadhaar,
-          orgType: formData.orgType,
-          pan: formData.pan,
-          panName: formData.panName,
-          panDob: formData.panDob,
-          panConsent: formData.panConsent,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/submit-pan`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            aadhaar: formData.aadhaar,
+            orgType: formData.orgType,
+            pan: formData.pan,
+            panName: formData.panName,
+            panDob: formData.panDob,
+            panConsent: formData.panConsent,
+          }),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         alert("PAN submitted successfully!");
+        // Reset form and return to step 1 (Aadhaar page)
+        setFormData({
+          aadhaar: "",
+          name: "",
+          consent: false,
+          otp: "",
+          orgType: "proprietorship",
+          pan: "",
+          panName: "",
+          panDob: "",
+          panConsent: false,
+        });
         setStep(1);
+        setOtpMessage("");
+        setErrorMessage("");
       } else {
         setErrorMessage(data.error || "Failed to submit PAN");
       }
