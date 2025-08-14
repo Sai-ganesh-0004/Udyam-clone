@@ -2,6 +2,10 @@
 
 A full-stack clone of the Udyam Registration portal, built with React (frontend), Node.js/Express (backend), MongoDB, and a Python web scraper for dynamic form schema extraction.
 
+## 🚀 Live Demo
+
+**Frontend**: [udyam-clone-wrfg.vercel.app](https://udyam-clone-wrfg.vercel.app)
+
 ---
 
 ## Project Structure
@@ -77,7 +81,7 @@ A full-stack clone of the Udyam Registration portal, built with React (frontend)
 ## Credits
 
 - Inspired by the official [Udyam Registration Portal](https://udyamregistration.gov.in/)
-- Built by Sai Ganesh and contributors
+- Built by Simma Sai Ganesh
 
 ---
 
