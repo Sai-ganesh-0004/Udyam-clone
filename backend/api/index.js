@@ -1,6 +1,8 @@
 // index.js
 if (!process.env.VERCEL) {
-  require("dotenv").config({ path: require('path').resolve(__dirname, '../.env') });
+  require("dotenv").config({
+    path: require("path").resolve(__dirname, "../.env"),
+  });
 }
 const express = require("express");
 const { MongoClient } = require("mongodb");
@@ -92,8 +94,8 @@ app.get("/api", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Udyam API");
+app.get("/api/hello", (req, res) => {
+  res.send("Welcome to the Udyam API ");
 });
 
 app.post("/api/validate", (req, res) => {
@@ -109,7 +111,7 @@ app.post("/api/generate-otp", async (req, res) => {
   try {
     // Ensure database connection
     await connectDB();
-    
+
     const errors = validateAgainstSchema(req.body);
     if (errors.length) {
       return res.status(400).json({ errors });
@@ -143,7 +145,7 @@ app.post("/api/verify-otp", async (req, res) => {
   try {
     // Ensure database connection
     await connectDB();
-    
+
     const { aadhaar, otp } = req.body;
     if (!aadhaar || !otp) {
       return res.status(400).json({ error: "Aadhaar and OTP are required" });
@@ -166,7 +168,7 @@ app.post("/api/submit-pan", async (req, res) => {
   try {
     // Ensure database connection
     await connectDB();
-    
+
     const { aadhaar, orgType, pan, panName, panDob, panConsent } = req.body;
     if (!aadhaar || !orgType || !pan || !panName || !panDob) {
       return res.status(400).json({ error: "All PAN fields are required" });
@@ -204,7 +206,7 @@ app.post("/api/submit", async (req, res) => {
   try {
     // Ensure database connection
     await connectDB();
-    
+
     const result = await registrationsCollection.insertOne({
       ...req.body,
       createdAt: new Date(),
